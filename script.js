@@ -1,17 +1,17 @@
 function add (num1, num2){
-    return num1 + num2
+    return Math.round((num1 + num2) * 100000000)/100000000
 }
 
 function subtract (num1, num2) {
-    return num1 - num2
+    return Math.round((num1 - num2) * 100000000)/100000000
 }
 
 function multiply (num1, num2) {
-    return num1 * num2
+    return Math.round((num1 * num2) * 100000000)/100000000
 }
 
 function divide (num1, num2) {
-    return num1 / num2
+    return Math.round((num1 / num2) * 100000000)/100000000
 }
 
 function calculate (operator, num1, num2) {
@@ -35,6 +35,7 @@ const display = document.querySelector('.display')
 const digits = document.querySelectorAll('.digit')
 const operators = document.querySelectorAll('.operator')
 const equalBtn = document.querySelector('#equal')
+const clearBtn = document.querySelector('.clear')
 let num1, num2, oper
 
 digits.forEach((digit) => {
@@ -50,6 +51,7 @@ operators.forEach((operator) => {
             num1 = display.textContent
             console.log(num1)
         }
+        //TODO: ilk sayi ve operator sectikten sonra ikinci sayiyi yazmaya baslayinca otomatik displayi sifirla
         display.textContent = ''
     })
 })
@@ -60,5 +62,13 @@ equalBtn.addEventListener('click', () => {
         console.log(num2)
         display.textContent = calculate(oper, num1, num2)
         num1, num2, oper = undefined
+    }
+})
+
+clearBtn.addEventListener('click', () => {
+    if(display.textContent === ''){
+        num1, num2, oper = undefined
+    } else {
+        display.textContent = ''
     }
 })

@@ -5,29 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script> 
+    <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
-    <div class="display"></div>
-    <button class="clear">C</button>
-    <div class="digits">
-        <button class="digit" id="zero">0</button>
-        <button class="digit" id="one">1</button>
-        <button class="digit" id="two">2</button>
-        <button class="digit" id="three">3</button>
-        <button class="digit" id="four">4</button>
-        <button class="digit" id="five">5</button>
-        <button class="digit" id="six">6</button>
-        <button class="digit" id="seven">7</button>
-        <button class="digit" id="eight">8</button>
-        <button class="digit" id="nine">9</button>
-    </div>
-    <div class="operators">
-        <button class="operator" id="divide">/</button>
-        <button class="operator" id="multiply">*</button>
-        <button class="operator" id="subtract">-</button>
-        <button class="operator" id="add">+</button>
-        <button id="equal">=</button>
+    <div class="calculator">
+        <div class="display"></div>
+        <div class="buttons">
+            <div class="leftBtns">
+            <button class="clear greyBtn">C</button>
+                <div class="digits">
+                    <button class="digit blackBtn" id="one">1</button>
+                    <button class="digit blackBtn" id="two">2</button>
+                    <button class="digit blackBtn" id="three">3</button>
+                    <button class="digit blackBtn" id="four">4</button>
+                    <button class="digit blackBtn" id="five">5</button>
+                    <button class="digit blackBtn" id="six">6</button>
+                    <button class="digit blackBtn" id="seven">7</button>
+                    <button class="digit blackBtn" id="eight">8</button>
+                    <button class="digit blackBtn" id="nine">9</button>
+                    <button class="digit blackBtn" id="zero">0</button>
+                </div>
+            </div>
+            <div class="operators">
+                <button class="operator orangeBtn" id="divide">/</button>
+                <button class="operator orangeBtn" id="multiply">*</button>
+                <button class="operator orangeBtn" id="subtract">-</button>
+                <button class="operator orangeBtn" id="add">+</button>
+                <button class="orangeBtn" id="equal">=</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
