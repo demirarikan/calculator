@@ -8,22 +8,25 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 42px;
 }
 
 .display {
-    width: 160px;
+    width: 246px;
+    height: 48px;
     color: white;
     text-align: right;
     padding-right: 15px;
 }
 
 button {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border: none;
     border-radius: 50%;
     margin: 5px;
     color: white;
+    font-size: large;
 }
 
 .buttons {
@@ -42,7 +45,7 @@ button {
 
 .digits {
     display: grid;
-    grid-template-columns: repeat(3, 40px);
+    grid-template-columns: repeat(3, 60px);
 }
 
 .blackBtn {
@@ -56,4 +59,10 @@ button {
 
 .orangeBtn {
     background-color: rgb(255, 149, 0);
+}
+
+#zero {
+    width: 110px;
+    border-radius: 24px;
+    padding-right: 65px;
 }
