@@ -11,6 +11,7 @@ function multiply (num1, num2) {
 }
 
 function divide (num1, num2) {
+    if(num2===0) return 'Error'
     return Math.round((num1 / num2) * 100000000)/100000000
 }
 
@@ -39,7 +40,7 @@ const clearBtn = document.querySelector('.clear')
 
 const calc = {
     displayNum: '',
-    firstNum: null,
+    currNum: null,
     secNum: null,
     waitingForSecNum: false,
     operator: null,
@@ -47,13 +48,14 @@ const calc = {
 
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
-        if(calc.waitingForSecNum === false){
+        if(!calc.waitingForSecNum){
             calc.displayNum += digit.textContent
-            calc.firstNum = calc.displayNum
+            calc.currNum = calc.displayNum
             display.textContent = calc.displayNum 
         } else {
-            calc.secNum = calc.firstNum
+            calc.secNum = calc.currNum
             calc.displayNum = digit.textContent
+            calc.currNum = calc.displayNum
             display.textContent = calc.displayNum
             calc.waitingForSecNum = false
         }
@@ -62,17 +64,26 @@ digits.forEach((digit) => {
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
+        if(calc.waitingForSecNum){
+            calc.operatorv= operator.textContent
+        } else if (calc.currNum !== null && calc.secNum !== null && calc.operator !== null && calc.waitingForSecNum === false){
+            calc.displayNum = calculate(calc.operator, calc.secNum, calc.currNum)
+            calc.currNum = calc.displayNum
+            console.log('secnum:' + calc.secNum)
+            console.log('currNum:' + calc.currNum)
+            console.log('res:' + calc.displayNum)
+            display.textContent = calc.displayNum
+        }
         calc.operator = operator.textContent
         calc.waitingForSecNum = true
-
     })
 })
 
 equalBtn.addEventListener('click', () => {
-    if(calc.firstNum!==null && calc.secNum!==null && calc.operator !== null){
-        calc.displayNum = calculate(calc.operator, calc.secNum, calc.firstNum)
+    if(calc.currNum!==null && calc.secNum!==null && calc.operator !== null){
+        calc.displayNum = calculate(calc.operator, calc.secNum, calc.currNum)
         console.log('secnum:' + calc.secNum)
-        console.log('firstnum:' + calc.firstNum)
+        console.log('currNum:' + calc.currNum)
         console.log('res:' + calc.displayNum)
         display.textContent = calc.displayNum
     }
@@ -81,7 +92,7 @@ equalBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
         display.textContent = ''
         calc.displayNum = ''
-        calc.firstNum = null
+        calc.currNum = null
         calc.secNum = null
         calc.waitingForSecNum = false
         calc.operator = null
